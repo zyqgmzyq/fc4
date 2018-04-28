@@ -26,7 +26,7 @@ a) **Where to get the datasets?**
  - *Shi's Re-processing of Gehler's Raw Dataset*: [here](http://www.cs.sfu.ca/~colour/data/shi_gehler/)
  - *NUS-8 Camera Dataset*: [here](http://www.comp.nus.edu.sg/~whitebal/illuminant/illuminant.html)
 
-**(The following two sub-questions are FAQs before I release the code - now the script will take care of these details and you don't need to worry unless out of curisity.)**
+**(The following two sub-questions are FAQs before I release the code - now the script will take care of these details and you don't need to worry unless out of curiosity.)**
 
 b) **The input images look purely black. What's happening?**
 
@@ -76,14 +76,19 @@ e) **Pretrained models?**
   To get a pretrained model, please download [**Pretrained model on the ColorChecker Dataset**](https://github.com/yuanming-hu/fc4/releases/download/pretrained/pretrained_colorchecker_fold1and2.zip), and put the three files in folder `pretrained`
  - This model is trained on **fold 1 and fold 2**. It should be tested on **fold 0**. More models coming soon.
  
-f) **How to make inference on images based on trained model?**
+f) **How to make inference on images based on a trained model?**
+
+ - Please download the pretrained model first (as an example here). You can modify the model path to other checkpoints if you want.
  - Test on the ColorChecker dataset (make sure you have preprocessed it):
  ```
-  python2 fc4.py test tmp/colorchecker_fold1and2.ckpt -1 g0
+  python2 fc4.py test pretrained/colorchecker_fold1and2.ckpt -1 g0
  ```
- - Test on other images: TODO
+ - Test on other images: (e.g. `sample_inputs/a.png`)
+ ```
+ python2 fc4.py test pretrained/colorchecker_fold1and2.ckpt -1 sample_inputs/a.png
+ ```
  
- You will see the reulst in seconds. Legend:
+ You will see the results in seconds. Legend:
  <img src="web/images/legend.jpg" width="900">
 
 # Bibtex
@@ -109,5 +114,5 @@ f) **How to make inference on images based on trained model?**
  - (Let me know if you think something else should be here!)
 
 
-# Acknoledgements 
+# Acknowledgments 
  - The SqueezeNet model is taken from [here](https://github.com/DeepScale/SqueezeNet). Thank Yu Gu for his great efforts in converting the `Caffe` models into a `TensorFlow`-readable version! 
